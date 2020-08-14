@@ -1,0 +1,41 @@
+
+
+.list-header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 20%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5) ;
+}
+
+.item-header{
+    height: 100%;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.item-header:nth-child(1){
+    border-bottom: 2px solid #4169E1;
+}
+.item-header:nth-child(2){
+    border-bottom: 2px solid transparent;
+}
+
+.item-header a, .item-header i{
+    color: rgb(143, 140, 140);
+    
+}
+
+.item-header a{
+    text-decoration: none;
+    
+}
+
+.item-header i{
+    margin-bottom: 10px;
+}

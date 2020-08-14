@@ -1,0 +1,294 @@
+
+
+/* .main-wrap{
+    position: absolute;
+    z-index: -11;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.list-container{
+    margin-top: 60px;
+    height: 550px;
+    width: 60%;
+
+} */
+
+/* .list-header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 20%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5) ;
+} */
+
+
+/* .item-header{
+    height: 100%;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+} */
+
+/* .item-header:nth-child(1){
+    border-bottom: 2px solid #4169E1;
+}
+.item-header:nth-child(2){
+    border-bottom: 2px solid transparent;
+}
+
+.item-header a, .item-header i{
+    color: rgb(143, 140, 140);
+    
+}
+
+.item-header a{
+    text-decoration: none;
+    
+}
+
+.item-header i{
+    margin-bottom: 10px;
+} */
+/* 
+.second-container{
+    margin-top: 15px;
+    width: 100%;
+    height: 78%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5) ;
+    position: relative;
+} */
+
+.fixed-wrap{
+    top: 0;
+    position: sticky;
+}
+.input-container{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input-container .line{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: rgb(179, 178, 178);
+}
+
+
+.input-task{
+    width: 100%;
+    border: none;
+    padding-left: 10px;
+    /* position: relative; */
+}
+
+
+
+
+form{
+    width: 100%;
+}
+
+.input-task:focus, .input-edit:focus{
+    outline: none;
+}
+
+.icon-box{
+    /* overflow: hidden; */
+    margin-right: 30px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    padding-left: 5px;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px transparent;
+    border-radius: 50%;
+    transition: background-color 0.5s ;
+    position: relative;
+}
+
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+.material-icons {
+    cursor: pointer;
+    transition: color 0.5s;
+}
+
+.onhover:hover{
+    background: rgb(240, 238, 238);
+}
+
+.tasks-container{
+    width: 100%;
+    height: inherit;
+    padding: 0 20px;
+}
+
+.task{
+    position: relative;
+    display: flex;
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+label{
+    position: relative;
+    height: 40px;
+    width: 90%;
+    padding-left: 20px;
+    border-bottom:2px solid transparent;
+}
+
+label:hover{
+    border-bottom: 2px solid rgb(133, 132, 132);
+}
+
+
+
+.input-edit{
+    position: absolute;
+    top: 0;
+    border: none;
+    width: 100%;
+    background: none;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+.delete-container{
+    width: 30px;
+    height: 30px;
+    top: 13px;
+    right: 5px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background: none;
+}
+
+.delete-container:hover{
+    background: rgb(201, 201, 201);
+}
+.delete{
+    width: 30px;
+    font-size: 18px;
+    color: rgb(206, 7, 7);
+}
+
+.checkbox-container{
+    width: 5%;
+    position: relative;
+}
+
+.checkbox-container input{
+    position: absolute;
+    z-index: 100;
+    opacity: 0;
+    height: 20px;
+    width: 20px;
+    background: red;
+    cursor: pointer;
+}
+
+.checkbox-container input:checked ~ .checkmark::after{
+    display: block;
+    border-color: white;
+}
+
+.checkbox-container input:checked ~ .checkmark{
+   background: #4169E1 !important;
+   border-color:  #4169E1;
+}
+
+.checkmark{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    border: 3px solid rgb(107, 104, 104);
+    border-radius: 2px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.checkbox-container input:hover ~ .checkmark{
+    background: #ccc;
+}
+
+.checkmark::after{
+    content: "";
+    display: none;
+    position: absolute;
+    top: 0px;
+    width: 4px;
+    height: 8px;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    
+}
+
+.tasks-messages{
+    color: rgb(138, 136, 136);
+    padding-left: 20px;
+    padding-bottom: 5px;
+}
+
+.no-data-img{
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+    padding-top: 10px;
+}
+
+.no-data-container{
+    width: 100%;
+    height: calc(100% - 70px);
+    overflow: hidden;
+}
+.no-data-img img{
+    width: 100%;
+    height: 100%;
+}
+
+.no-data-container>h1{
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 700;
+
+}
+
+
+
+.loader{
+    top: 0;
+    left: 0;
+    position: absolute;
+}  
+
+  
+
+

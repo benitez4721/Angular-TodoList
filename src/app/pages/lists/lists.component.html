@@ -1,0 +1,70 @@
+
+
+<div class="second-container" id="second-container" >
+    <div class="fixed-wrap">
+        <div class="input-container" id="input-container">
+            <form #tareaForm = "ngForm" (ngSubmit)="onSubmit()">
+                <input type="text"
+                        class="input-task" 
+                        placeholder="Type here a task.." 
+                        id="input-task"
+                        [(ngModel)]="nuevaTarea"
+                        name="nuevaTarea"
+                        autocomplete="off"
+                        >
+                <div class="line" id="line"></div>
+            </form>
+            <div class="icon-box"
+                    [ngClass]="{'onhover': nuevaTarea.length > 0 && !loading}"
+                    [ngStyle]="{'cursor': nuevaTarea.length > 0 ? 'pointer' : 'default'}"
+                    (click)="onSubmit()">
+                <span class="material-icons"
+                        [ngStyle]="{'color': nuevaTarea.length > 0 ? '#4169E1' : 'rgba(0, 0, 0, 0.26)'}"
+                        >
+                    send
+                </span>
+                <div class="loader">
+                    <!-- <div class="lds-ring"><div></div><div></div><div></div><div></div></div> -->
+                    <mat-spinner diameter = "50" color = "blue" strokeWidth = "3" *ngIf="loading"></mat-spinner>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tasks-container" [ngStyle]="{'overflow': tasks.length > 4 ? 'auto': 'hidden'}" #second_container *ngIf="tasks.length > 0">
+        <div *ngFor="let task of tasks, let i=index" class="task">
+            <div class="checkbox-container">
+                <input type="checkbox" [id]="i" [name]="i"  class = "checkbox" (click)="checked(check, task)" #check>
+                <div class="checkmark"></div>
+            </div>
+            <label [for]="i">
+                <input class = "input-edit" 
+                        type="text" 
+                        autocomplete="off" 
+                        [value]="task.title" 
+                        [ngStyle]="{'text-decoration': task.completed ? 'line-through' : 'none'}">
+            </label><br>
+
+            <div class="delete-container">
+                <span class="material-icons delete" (click)="deleteTask(i,task)">
+                    delete
+                </span>
+            </div>
+        </div>              
+    </div>
+
+    <div class="tasks-messages" *ngIf="tasks.length>0">
+        <span>Completed tasks: {{completedTasks}}</span>
+        &nbsp;
+        <span>Total tasks: {{tasks.length}}</span>
+    </div>
+
+    <div class="no-data-container" *ngIf = "tasks.length === 0">                
+        <div class="no-data-img" >
+            <img src="../../../assets/imgs/no-data.svg" alt="">
+        </div>
+        <h1>You have no tasks</h1>
+    </div>
+
+
+</div>
