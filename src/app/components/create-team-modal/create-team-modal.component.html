@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+
+<mat-dialog-content>{{data.content}}</mat-dialog-content>
+<mat-form-field appearance="legacy" class="mat-input">
+    <mat-label>{{data.label_input}}</mat-label>
+    <input matInput [(ngModel)]="teamName" (keyup.enter) = "onSubmit()" [readonly] = "loading" autocomplete="off" #nameInput> 
+</mat-form-field>
+
+<mat-spinner diameter = "30" *ngIf="loading"></mat-spinner>
+
+<mat-dialog-actions align="end" >
+    <button mat-flat-button  mat-dialog-close style="color: #1565C0">Cancel</button>
+    <button mat-flat-button  color = "primary" [disabled] = "emptyString" (click)="onSubmit()">{{data.button_text}}</button>
+</mat-dialog-actions>

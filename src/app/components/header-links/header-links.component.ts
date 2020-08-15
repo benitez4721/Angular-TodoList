@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ActivationEnd, NavigationEnd } from '@angular/router';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header-links',
@@ -8,12 +9,25 @@ import { Router } from '@angular/router';
 })
 export class HeaderLinksComponent implements OnInit {
 
-  constructor(private router: Router) { }
-
+  routeActive: string;
+  constructor(private router: Router) { 
+    
+    this.getUrl().subscribe(route => this.routeActive = route)
+    
+  }
+  
   ngOnInit(): void {
   }
 
   navigate(route: string){
-    this.router.navigateByUrl(route)
+    
+    this.router.navigateByUrl(`/dashboard/${route}`)
+  }
+
+  getUrl(){
+    return this.router.events.pipe(
+      filter( event => event instanceof NavigationEnd),
+      map( (event:NavigationEnd) => event.url),
+    )
   }
 }

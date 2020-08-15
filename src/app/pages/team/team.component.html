@@ -1,3 +1,33 @@
 <div class="second-container">
+    <div class="empty-team-container" *ngIf="teamsEmpty">
+        <div class="team-img">
+            <img src="../../../assets/imgs/team.svg" alt="">
+        </div>
+        <h1>You don`t have a team</h1>
+    </div>
     
+    <div class="cards" *ngIf = "!teamsEmpty">
+        
+        <mat-card *ngFor="let team of teams; let last = last" [ngClass]="{'last-item': last}">
+            <mat-card-header>
+                
+                <mat-card-title>{{team | titlecase}}</mat-card-title>
+
+            </mat-card-header>
+            <mat-card-content>
+                <div class="card-content">    
+                    <img mat-card-avatar src="../../../assets/imgs/foto-perfil.jpeg">
+                    <span>Marco Benitez</span>
+                    <mat-chip-list>
+                        <mat-chip>Owner</mat-chip>
+                    </mat-chip-list>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div class="buttoms-container">
+        <button mat-raised-button color = "primary" (click)="createTeam()">Create a Team</button>
+        <button mat-raised-button color = "accent" (click)="joinTeam()">Join a Team</button>
+    </div>
 </div>

@@ -1,11 +1,19 @@
-import { RouterModule, Routes } from '@angular/router';
-import { ListsComponent } from './pages/lists/lists.component';
-import { TeamComponent } from './pages/team/team.component';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { PagesRoutingModule } from './pages/pages-routing.module';
+import { AuthRoutingModule } from './auth/auth-routing.module';
+
+
 
 const routes: Routes = [
-    { path: 'tasks', component: ListsComponent },
-    { path: 'team', component: TeamComponent },
-    { path: '**', pathMatch:'full', redirectTo: 'tasks' }
+  {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+  
 ];
 
-export const APP_ROUTING = RouterModule.forRoot(routes);
+@NgModule({
+  imports: [RouterModule.forRoot(routes),
+            PagesRoutingModule,
+            AuthRoutingModule],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }

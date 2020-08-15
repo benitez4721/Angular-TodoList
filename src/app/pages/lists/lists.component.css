@@ -289,6 +289,13 @@ label:hover{
     position: absolute;
 }  
 
-  
+.input-container:hover .line{
+ background: rgb(133, 132, 132);  
+ transition: 0.5s 
+}
+
+.input-task:focus ~ .line{
+    background: #4169E1 !important
+}
 
 

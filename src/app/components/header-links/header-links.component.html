@@ -1,9 +1,9 @@
 <div class="list-header">
-    <div class="item-header" id="tasks" (click)="navigate('tasks')">
+    <div class="item-header" id="tasks" (click)="navigate('tasks')" [ngClass]="{'active': routeActive === '/dashboard/tasks' || routeActive === '/dashboard'}">
         <i class="fas fa-user"></i>
         <a>My tasks</a>
     </div>
-    <div class="item-header" id="teams" (click)="navigate('team')">
+    <div class="item-header" id="teams" (click)="navigate('team')" [ngClass]="{'active': routeActive === '/dashboard/team'}">
         <i class="fas fa-user-friends"></i>
         <a>My teams</a>
     </div>
