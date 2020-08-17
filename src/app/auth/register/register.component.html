@@ -1,1 +1,43 @@
-<p>register works!</p>
+<div class="main-container">
+    <div class="login-container">
+        <div class="title">
+            <i class="fab fa-angular"></i>
+            <h1>To do App</h1>
+        </div>
+        <div class="login-form-container">
+            <div class="login-img">
+                <img src="../../../assets/imgs/registerImg.svg" alt="">
+            </div>
+            <div class="form">
+                <h2>Register</h2>
+                <form [formGroup]="registerForm" (ngSubmit) = "onSubmit()">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput formControlName="nombre" autocomplete="off">
+                        <mat-error *ngIf="registerForm.controls.nombre.invalid">* The name is required</mat-error>
+                    </mat-form-field>         
+                    <mat-form-field appearance="outline">
+                        <mat-label>Apellido</mat-label>
+                        <input matInput formControlName="apellido" autocomplete="off">
+                        <mat-error *ngIf="registerForm.controls.apellido.invalid">* The last name is required</mat-error>
+                    </mat-form-field>               
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" autocomplete="off">
+                        <mat-error *ngIf="registerForm.controls.email.invalid">{{getEmailerror()}}</mat-error>
+                    </mat-form-field>               
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password" autocomplete="off">
+                        <mat-error *ngIf="registerForm.controls.password.invalid">{{getPassworderror()}}</mat-error>
+                    </mat-form-field>    
+                    
+                    <div class="form-actions">
+                        <a href="" class="forgot" [routerLink]="['/login']" routerLinkActive="router-link-active" >You already have account?</a>
+                        <button type="submit" class="login-button">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>  
