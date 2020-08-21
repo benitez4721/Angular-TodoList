@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatLabel, MatFormFieldModule } from '@angular/material/form-field';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -16,11 +17,11 @@ import { MatLabel, MatFormFieldModule } from '@angular/material/form-field';
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    RouterModule
   ]
 })
 export class AuthModule { }

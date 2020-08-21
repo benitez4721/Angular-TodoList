@@ -29,7 +29,6 @@ import { PagesComponent } from './pages.component';
   imports: [
     CommonModule,
     BrowserModule,
-    PagesRoutingModule,
     SharedModule,
     AppRoutingModule,
     ComponentsModule,
@@ -42,11 +41,11 @@ import { PagesComponent } from './pages.component';
     MatInputModule,
     MatCardModule,
     MatChipsModule,
-    AppRoutingModule,
   ],
   exports: [
     ListsComponent,
     TeamComponent,
+    PagesComponent
   ]
 })
 export class PagesModule { }

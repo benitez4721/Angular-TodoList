@@ -1,7 +1,12 @@
 
 
 
-window.addEventListener('load', function() {
+// window.addEventListener('load', function() {
+    
+    
+// });
+const customInitFunctions = () => {
+
     let foto_perfil = document.getElementById("foto-nav");
     let menu = document.getElementById('profile-menu')
     let open_menuProfile = false
@@ -17,6 +22,8 @@ window.addEventListener('load', function() {
         }
     })
     
+    
+    
     foto_perfil.addEventListener('click', (e) => { 
         e.preventDefault()
         if (!open_menuProfile){
@@ -30,7 +37,6 @@ window.addEventListener('load', function() {
             open_menuProfile = false
         }
     })
+}
 
-    
-    });
     

@@ -34,15 +34,18 @@
     <div class="tasks-container" [ngStyle]="{'overflow': tasks.length > 4 ? 'auto': 'hidden'}" #second_container *ngIf="tasks.length > 0">
         <div *ngFor="let task of tasks, let i=index" class="task">
             <div class="checkbox-container">
-                <input type="checkbox" [id]="i" [name]="i"  class = "checkbox" (click)="checked(check, task)" #check>
+                <input type="checkbox" [id]="i" [name]="i"  class = "checkbox" (click)="checked(check, task)"  [checked] = "task.completed" #check>
                 <div class="checkmark"></div>
             </div>
             <label [for]="i">
                 <input class = "input-edit" 
                         type="text" 
                         autocomplete="off" 
-                        [value]="task.title" 
-                        [ngStyle]="{'text-decoration': task.completed ? 'line-through' : 'none'}">
+                        [(ngModel)] = "task.name" 
+                        [ngStyle]="{'text-decoration': task.completed ? 'line-through' : 'none'}"
+                        (keyup.enter) = "updateName(task)"
+                        (blur) = "updateName(task)"
+                        >
             </label><br>
 
             <div class="delete-container">

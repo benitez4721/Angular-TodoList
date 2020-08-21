@@ -21,11 +21,11 @@
                         <input matInput formControlName="apellido" autocomplete="off">
                         <mat-error *ngIf="registerForm.controls.apellido.invalid">* The last name is required</mat-error>
                     </mat-form-field>               
-                    <mat-form-field appearance="outline">
+                    <mat-form-field appearance="outline" class="email-form">
                         <mat-label>Email</mat-label>
                         <input matInput formControlName="email" autocomplete="off">
                         <mat-error *ngIf="registerForm.controls.email.invalid">{{getEmailerror()}}</mat-error>
-                    </mat-form-field>               
+                    </mat-form-field> 
                     <mat-form-field appearance="outline">
                         <mat-label>Password</mat-label>
                         <input matInput formControlName="password" autocomplete="off">

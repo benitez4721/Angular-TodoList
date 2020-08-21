@@ -1,12 +1,14 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css',
               '../auth.css'],
-  encapsulation: ViewEncapsulation.None              
+  // encapsulation: ViewEncapsulation.None              
 })
 export class LoginComponent implements OnInit {
 
@@ -14,13 +16,22 @@ export class LoginComponent implements OnInit {
     email: ['',[Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(5)]]
   })
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private user_s: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
-    console.log(this.loginForm.value);
+    if(this.loginForm.valid){
+
+      this.user_s.login(this.loginForm.value).subscribe( resp => {this.router.navigateByUrl('/dashboard')},
+                                                         error => {this.loginForm.controls.password.setErrors({
+                                                           incorrect: true
+                                                         })} 
+      )
+    
+    }
+    
     
   }
 
@@ -29,7 +40,15 @@ export class LoginComponent implements OnInit {
   }
 
   getPassworderror(){
-    return this.loginForm.controls.password.hasError('required') ? 'The password is required' : 'The password should have at least 5 characters'
+    let loginControl = this.loginForm.controls.password
+
+    if(loginControl.hasError('required')){
+      return 'The password is required'
+    }
+    else if(loginControl.hasError('incorrect')){
+      return 'The password or email are incorrect'
+    }
+    return 'The password should have at least 5 characters'
   }
 
 }

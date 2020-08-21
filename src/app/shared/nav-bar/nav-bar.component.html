@@ -2,8 +2,10 @@
     <nav id="nav">
         <h2>To Do List-Angular</h2>
         <div class="profile">
-            <span class="name">Marco Benitez</span>
-            <a href="#" class="foto" id="foto-nav"><img src="../../../assets/imgs/foto-perfil.jpeg" alt="" class="select"></a>
+            <span class="name">{{user_s.user.nombre}} {{user_s.user.apellido}}</span>
+            <div class="foto" id="foto-nav">
+                <img src="../../../assets/imgs/foto-perfil.jpeg" alt="" class="select">
+            </div>
             <div class="menu" id="profile-menu" open="false">
                 <ul>
                     <li>Perfil</li>

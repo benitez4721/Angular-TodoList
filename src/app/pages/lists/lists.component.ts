@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewChecked, OnDestroy } from '@angular/core';
 
 import { Task } from '../../../models/task.model';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-lists',
@@ -8,7 +9,7 @@ import { Task } from '../../../models/task.model';
   styleUrls: ['./lists.component.css',
               '../styles-shared.css']
 })
-export class ListsComponent implements OnInit, AfterViewChecked {
+export class ListsComponent implements OnInit, AfterViewChecked{
 
   nuevaTarea: string = ""
   completedTasks: number = 0
@@ -16,10 +17,14 @@ export class ListsComponent implements OnInit, AfterViewChecked {
   color = 'red'
   loading: boolean = false
   @ViewChild('second_container') second_container: ElementRef
-  constructor() { }
+  constructor(private task_s: TaskService) { }
 
   ngOnInit(): void {
-   
+
+    this.task_s.getTasks().subscribe( (resp:any) => {
+      this.tasks = resp.tasks;
+      
+    })
   }
 
   ngAfterViewChecked(): void {
@@ -43,24 +48,32 @@ export class ListsComponent implements OnInit, AfterViewChecked {
   onSubmit(){
     this.loading = true
 
-    setTimeout( () => {
-      this.loading = false
-      if (this.nuevaTarea.length > 0) {
-        let task: Task = {
-          title: this.nuevaTarea,
-          completed: false
-        }
-        this.tasks.push(task)
-        this.nuevaTarea = ""  
+    if (this.nuevaTarea.length > 0) {
+      let task: Task = {
+        name: this.nuevaTarea,
       }
-    },100)
+
+      this.task_s.createTask(task).subscribe( (resp:any) => {
+        
+        this.tasks.push(resp.tarea)
+        this.nuevaTarea = ""  
+        
+        this.loading = false
+      })
+
+    }
     
+  }
+
+  updateName(task: Task){
+    this.task_s.editTasks(task).subscribe()
     
   }
 
   checked(box, task: Task){
     
     task.completed = box.checked
+    this.task_s.editTasks(task).subscribe()
     box.checked ? this.completedTasks++ : this.completedTasks--
     
   }
@@ -72,6 +85,7 @@ export class ListsComponent implements OnInit, AfterViewChecked {
     if(this.tasks.length < 5){
       this.second_container.nativeElement.scrollTop = 0
     }
+    this.task_s.deleteTask(task._id).subscribe()
     
   }
   

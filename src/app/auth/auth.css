@@ -45,7 +45,10 @@ mat-form-field.mat-form-field {
     font-size: 13px;
     width: 100%;
     background: none;
+    margin-bottom: 5px;
 }
+
+
 
 .mat-form-field-appearance-outline .mat-form-field-outline-thick {
     color: #6EB5F6;
@@ -128,7 +131,7 @@ button:focus{
 .forgot, .register{
     text-decoration: none;
     color: #64b5f6;
-    font-size: 15px;
+    font-size: 12px;
 }
 
 .register{
