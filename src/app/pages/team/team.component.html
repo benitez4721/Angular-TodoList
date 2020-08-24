@@ -1,9 +1,12 @@
 <div class="second-container">
-    <div class="empty-team-container" *ngIf="teamsEmpty">
+    <div class="empty-team-container" *ngIf="teamsEmpty && !loading_teams">
         <div class="team-img">
             <img src="../../../assets/imgs/team.svg" alt="">
         </div>
         <h1>You don`t have a team</h1>
+    </div>
+    <div *ngIf="loading_teams" class="loader">
+        <mat-spinner diameter = "60" color = "blue" strokeWidth = "3" ></mat-spinner>
     </div>
     
     <div class="cards" *ngIf = "!teamsEmpty">
@@ -11,13 +14,14 @@
         <mat-card *ngFor="let team of teams; let last = last" [ngClass]="{'last-item': last}">
             <mat-card-header>
                 
-                <mat-card-title>{{team | titlecase}}</mat-card-title>
+                <mat-card-title>{{team.team.name | titlecase}}</mat-card-title>
+                <mat-card-subtitle>Code: {{team.team.code}}</mat-card-subtitle>
 
             </mat-card-header>
             <mat-card-content>
                 <div class="card-content">    
                     <img mat-card-avatar src="../../../assets/imgs/foto-perfil.jpeg">
-                    <span>Marco Benitez</span>
+                    <span>{{team.team.owner.nombre}} {{team.team.owner.apellido}}</span>
                     <mat-chip-list>
                         <mat-chip>Owner</mat-chip>
                     </mat-chip-list>
@@ -26,7 +30,7 @@
         </mat-card>
     </div>
 
-    <div class="buttoms-container">
+    <div class="buttoms-container" *ngIf="!loading_teams">
         <button mat-raised-button color = "primary" (click)="createTeam()">Create a Team</button>
         <button mat-raised-button color = "accent" (click)="joinTeam()">Join a Team</button>
     </div>

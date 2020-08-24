@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
     email: ['',[Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(5)]]
   })
+  loading = false;
   constructor(private fb: FormBuilder, private user_s: UserService, private router: Router) { }
 
   ngOnInit(): void {
@@ -23,11 +24,14 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     if(this.loginForm.valid){
-
+      this.loading = true
       this.user_s.login(this.loginForm.value).subscribe( resp => {this.router.navigateByUrl('/dashboard')},
-                                                         error => {this.loginForm.controls.password.setErrors({
+                                                         error => {
+                                                           this.loginForm.controls.password.setErrors({
                                                            incorrect: true
-                                                         })} 
+                                                         })
+                                                         this.loading = false
+                                                        } 
       )
     
     }

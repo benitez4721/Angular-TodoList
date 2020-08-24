@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatLabel, MatFormFieldModule } from '@angular/material/form-field';
 import { RouterModule } from '@angular/router';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     FormsModule,
     MatInputModule,
-    MatFormFieldModule,
+    MatFormFieldModule,,
+    MatProgressSpinnerModule,
     RouterModule
   ]
 })

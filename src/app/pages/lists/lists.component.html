@@ -62,11 +62,15 @@
         <span>Total tasks: {{tasks.length}}</span>
     </div>
 
-    <div class="no-data-container" *ngIf = "tasks.length === 0">                
+    <div class="no-data-container" *ngIf = "tasks.length === 0 && !loading_tasks" >                
         <div class="no-data-img" >
             <img src="../../../assets/imgs/no-data.svg" alt="">
         </div>
         <h1>You have no tasks</h1>
+    </div>
+
+    <div *ngIf="loading_tasks" class="loader">
+        <mat-spinner diameter = "60" color = "blue" strokeWidth = "3" ></mat-spinner>
     </div>
 
 

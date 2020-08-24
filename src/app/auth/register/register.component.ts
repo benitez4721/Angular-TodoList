@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
+  loading = false;
   registerForm = this.fb.group({
     nombre: ['',Validators.required],
     apellido: ['',Validators.required],
@@ -26,11 +27,12 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(){
     if(this.registerForm.valid){
+      this.loading = true
       this.user_s.register(this.registerForm.value).subscribe( 
             resp => {this.router.navigateByUrl('login')}, 
             error => { console.log(error);
-            
-                       this.registerForm.controls.email.setErrors({notUnique: true})
+                      this.loading = false
+                      this.registerForm.controls.email.setErrors({notUnique: true})
                       })
 
     }    

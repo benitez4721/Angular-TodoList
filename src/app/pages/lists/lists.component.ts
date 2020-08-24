@@ -16,6 +16,7 @@ export class ListsComponent implements OnInit, AfterViewChecked{
   tasks: Task[] = [];
   color = 'red'
   loading: boolean = false
+  loading_tasks = true
   @ViewChild('second_container') second_container: ElementRef
   constructor(private task_s: TaskService) { }
 
@@ -23,7 +24,8 @@ export class ListsComponent implements OnInit, AfterViewChecked{
 
     this.task_s.getTasks().subscribe( (resp:any) => {
       this.tasks = resp.tasks;
-      
+      this.completedTasks =  this.tasks.filter( (elemt:Task) => elemt.completed).length
+      this.loading_tasks = false
     })
   }
 
@@ -62,6 +64,7 @@ export class ListsComponent implements OnInit, AfterViewChecked{
       })
 
     }
+    this.loading = false
     
   }
 
